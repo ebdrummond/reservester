@@ -1,7 +1,7 @@
 class Restaurant < ActiveRecord::Base
   belongs_to :owner
 
-  validates :name, :description, :street_1, :city, :zip, :state, :phone,
+  validates :name, :description, :street_1, :city, :zip, :state, :phone, :owner_id,
     presence: true
 
   def street_address
