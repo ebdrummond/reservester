@@ -13,8 +13,9 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      redirect_to restaurants_path
+      redirect_to restaurant_path(@restaurant), message: "Restaurant created!"
     else
+      flash[:error] = "Restaurant failed to save."
       render :new
     end
   end
@@ -27,15 +28,17 @@ class RestaurantsController < ApplicationController
 
   def update
     if @restaurant.update_attributes(restaurant_params)
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_path(@restaurant), message: "Restaurant updated!"
     else
+      flash[:error] = "Restaurant failed to save."
       render :edit
     end
   end
 
   def destroy
     @restaurant.destroy
-    redirect_to restaurants_path
+
+    redirect_to restaurants_path, message: "Restaurant deleted."
   end
 
   private
