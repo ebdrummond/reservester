@@ -7,8 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-/db
-
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
