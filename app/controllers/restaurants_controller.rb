@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_owner!, except: [:index, :show]
   before_filter :assign_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -1,4 +1,4 @@
-form.simple_form {
+form.simple_form.new_restaurant, form.simple_form.edit_restaurant {
   label {
     width: 10%;
   }
@@ -10,6 +10,22 @@ form.simple_form {
   }
   .submit {
     width: 40%;
+    text-align: center;
+  }
+}
+
+form.simple_form.new_owner {
+  label {
+    width: 10%;
+  }
+  input {
+    width: 20%;
+  }
+  .input {
+    padding: 10px;
+  }
+  .form-actions {
+    width: 30%;
     text-align: center;
   }
 }

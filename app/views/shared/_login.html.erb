@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="span12">
+    <div class="row">
+      <% if current_owner %>
+        <%= link_to "Log out", destroy_owner_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Log in", new_owner_session_path %> or <%= link_to "Sign up", new_owner_registration_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
