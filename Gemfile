@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'simple_form'
 gem "bootstrap-sass", "~> 3.1.0"
+gem "devise"
 
 group :development, :test do
   gem 'pry'

@@ -13,7 +13,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant), message: "Restaurant created!"
+      redirect_to restaurant_path(@restaurant)
+      flash[:notice] = "Restaurant created!"
     else
       flash[:error] = "Restaurant failed to save."
       render :new
@@ -28,7 +29,8 @@ class RestaurantsController < ApplicationController
 
   def update
     if @restaurant.update_attributes(restaurant_params)
-      redirect_to restaurant_path(@restaurant), message: "Restaurant updated!"
+      redirect_to restaurant_path(@restaurant)
+      flash[:notice] = "Restaurant updated!"
     else
       flash[:error] = "Restaurant failed to save."
       render :edit
