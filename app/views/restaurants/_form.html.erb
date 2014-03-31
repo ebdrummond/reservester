@@ -1,0 +1,13 @@
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :street_1 %>
+  <%= f.input :street_2 %>
+  <%= f.input :city %>
+  <%= f.input :zip %>
+  <%= f.input :state %>
+  <%= f.input :phone %>
+  <div class="submit">
+    <%= f.button :submit, class: "btn-primary submit" %>
+  </div>
+<% end %>
