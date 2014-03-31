@@ -1,4 +1,5 @@
 class Restaurant < ActiveRecord::Base
+  belongs_to :owner
 
   validates :name, :description, :street_1, :city, :zip, :state, :phone,
     presence: true
@@ -24,4 +25,5 @@ end
 #  phone       :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  owner_id    :integer
 #

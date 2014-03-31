@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_owner!, except: [:index, :show]
   before_filter :assign_restaurant, only: [:show, :edit, :update, :destroy]
+  before_filter :validate_authorization, only: [:edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -11,7 +12,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = current_owner.restaurants.build(restaurant_params)
 
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
@@ -48,6 +49,13 @@ class RestaurantsController < ApplicationController
 
   def assign_restaurant
     @restaurant = Restaurant.find(params[:id])
+  end
+
+  def validate_authorization
+    unless @restaurant.owner == current_owner
+      redirect_to :back
+      flash[:error] = "You are not authorized to perform this action."
+    end
   end
 
   def restaurant_params

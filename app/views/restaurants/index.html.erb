@@ -22,7 +22,9 @@
         <% end %>
       </table>
 
-      <%= button_to "Add a new restaurant", new_restaurant_path, method: :get, class: "btn btn-primary" %>
+      <% if current_owner %>
+        <%= button_to "Add a new restaurant", new_restaurant_path, method: :get, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -19,12 +19,18 @@
           <td><strong>Phone</strong></td>
           <td><%= @restaurant.phone %></td>
         </tr>
+        <tr>
+          <td><strong>Owner</strong></td>
+          <td><%= @restaurant.owner.name %></td>
+        </tr>
       </table>
 
-      <div class="btn-group">
-        <%= button_to "Edit", edit_restaurant_path(@restaurant), method: :get, class: "btn btn-primary" %>
-        <%= button_to "Delete", restaurant_path(@restaurant), method: :delete, confirm: "Are you sure you want to delete this restaurant?", class: "btn btn-danger" %>
-      </div>
+      <% if current_owner && @restaurant.owner == current_owner %>
+        <div class="btn-group">
+          <%= button_to "Edit", edit_restaurant_path(@restaurant), method: :get, class: "btn btn-primary" %>
+          <%= button_to "Delete", restaurant_path(@restaurant), method: :delete, confirm: "Are you sure you want to delete this restaurant?", class: "btn btn-danger" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

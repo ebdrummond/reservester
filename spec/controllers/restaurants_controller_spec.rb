@@ -66,7 +66,7 @@ describe RestaurantsController do
   end
 
   context "GET show" do
-    let(:restaurant) { Restaurant.create(valid_params[:restaurant]) }
+    let(:restaurant) { owner.restaurants.create(valid_params[:restaurant]) }
 
     it "renders the show template" do
       get :show, id: restaurant.id
@@ -75,7 +75,7 @@ describe RestaurantsController do
   end
 
   context "GET edit" do
-    let(:restaurant) { Restaurant.create(valid_params[:restaurant]) }
+    let(:restaurant) { owner.restaurants.create(valid_params[:restaurant]) }
 
     before { get :edit, id: restaurant.id }
 
@@ -89,7 +89,7 @@ describe RestaurantsController do
   end
 
   context "PUT update" do
-    let(:restaurant) { Restaurant.create(valid_params[:restaurant]) }
+    let(:restaurant) { owner.restaurants.create(valid_params[:restaurant]) }
 
     context "with invalid params" do
       before { put :update, id: restaurant.id, restaurant: { name: nil } }
@@ -118,7 +118,7 @@ describe RestaurantsController do
   end
 
   context "DELETE destroy" do
-    let!(:restaurant) { Restaurant.create(valid_params[:restaurant]) }
+    let!(:restaurant) { owner.restaurants.create(valid_params[:restaurant]) }
 
     it "destroys the restaurant" do
       expect{ delete :destroy, id: restaurant.id }.to change(Restaurant, :count).by(-1)
