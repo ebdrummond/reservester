@@ -1,6 +1,28 @@
-<% @restaurants.each do |restaurant| %>
-  <%= link_to restaurant.name, restaurant_path(restaurant) %>
-<% end %>
+<div class="container">
+  <div class="span12">
+    <div class="row">
+      <h1>Restaurants</h1>
+      <table class="table table-striped">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Address</th>
+          <th>Phone</th>
+        </tr>
+        <% @restaurants.each do |restaurant| %>
+          <tr>
+            <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+            <td><%= restaurant.description %></td>
+            <td>
+              <%= restaurant.street_address %><br>
+              <%= city_state_zip(restaurant) %>
+            </td>
+            <td><%= restaurant.phone %></td>
+          </tr>
+        <% end %>
+      </table>
 
-<%= button_to "Add a new restaurant", new_restaurant_path, method: :get %>
-
+      <%= button_to "Add a new restaurant", new_restaurant_path, method: :get, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

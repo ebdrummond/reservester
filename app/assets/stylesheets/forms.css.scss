@@ -1,0 +1,15 @@
+form.simple_form {
+  label {
+    width: 10%;
+  }
+  input, textarea {
+    width: 30%;
+  }
+  .input {
+    padding: 10px;
+  }
+  .submit {
+    width: 40%;
+    text-align: center;
+  }
+}
