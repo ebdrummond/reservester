@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <% alerts = { :error => "danger", :notice => "info", :info => "info", :alert => "danger" } %>
+      <% alerts.keys.each do |alert| %>
+        <% if flash[alert] %>
+          <div class="alert alert-<%= alerts[alert] %> alert-dismissable">
+            <button aria-hidden="true" class="close" data-dismiss="alert" type="button">&times;</button>
+            <%= flash[alert] %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

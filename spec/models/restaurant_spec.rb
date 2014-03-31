@@ -13,6 +13,20 @@ describe Restaurant do
     )
   }
 
+  let(:owner) {
+    Owner.create!(
+      first_name: "Mary",
+      last_name: "Owner",
+      email: "mary@example.com",
+      password: "password"
+    )
+  }
+
+
+  it "requires an owner" do
+    expect(restaurant).to_not be_valid
+  end
+
   it "requires a name" do
     restaurant.name = nil
     expect(restaurant).to_not be_valid
@@ -49,6 +63,7 @@ describe Restaurant do
   end
 
   it "is valid with all required attributes" do
+    restaurant.owner = owner
     expect(restaurant).to be_valid
   end
 end
