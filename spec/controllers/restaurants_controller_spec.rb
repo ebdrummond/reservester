@@ -21,6 +21,18 @@ describe RestaurantsController do
     params
   }
 
+  let(:owner) {
+    Owner.create!(
+      first_name: "Mary",
+      last_name: "Owner",
+      email: "mary@example.com",
+      password: "password"
+    )
+  }
+
+  before { sign_in owner }
+
+
   context "GET new" do
     it "renders the :new template" do
       get :new
