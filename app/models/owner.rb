@@ -8,6 +8,13 @@ class Owner < ActiveRecord::Base
 
   validates :first_name, :last_name, presence: true
 
+  before_save :capitalize_names
+
+  def capitalize_names
+    self.first_name = first_name.capitalize
+    self.last_name = last_name.capitalize
+  end
+
   def name
     "#{first_name} #{last_name}"
   end

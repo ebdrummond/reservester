@@ -3,10 +3,17 @@ class Restaurant < ActiveRecord::Base
 
   validates :name, :description, :street_1, :city, :zip, :state, :phone, :owner_id,
     presence: true
+  validate :not_mcdonalds
 
   def street_address
     return street_1 if street_2.blank?
     [street_1, street_2].join(", ")
+  end
+
+  def not_mcdonalds
+    errors.add(
+      :name, "Unable to accept McDonalds restaurants due to trademark infringement"
+    ) if name == "McDonalds"
   end
 end
 
